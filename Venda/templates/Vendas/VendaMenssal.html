@@ -1,0 +1,109 @@
+{% extends "global/base.html" %}
+
+{% block corpoPagina %}
+
+    <br>
+
+    <br>
+
+
+    <main class = "conteudo">
+        
+        <br>
+
+        <div class = "conteudoPrincipal">
+
+            <table>
+
+                <tr class = 'tabela-titulo'>
+
+                    {% for cat in categoria %}
+                
+                        <td><p>{{cat}}</p></td>
+                    
+                    {% endfor %}
+                
+                </tr>
+
+                {% for ven in vendas %}
+
+                    <tr>
+
+                       <td><p>{{ven.pk}}</p></td>
+
+                       <td><p>{{ven.produto.nome}}</p></td>
+
+                       <td><p>{{ven.unidadesVendidas}}</p></td>
+
+                       <td><p>{{ven.lucroBruto}}</p></td>
+
+                       <td><p>{{ven.gastoTescer}}</p></td>
+
+                       <td><p>{{ven.gastoFechar}}</p></td>
+
+                       <td><p>{{ven.gastoEncher}}</p></td>
+
+                       <td><p>{{ven.gastoBordar}}</p></td>
+
+                       <td><p>{{ven.gastoLinha}}</p></td>
+
+                       <td><p>{{ven.gastoCaixinha}}</p></td>
+
+                       <td><p>{{ven.gastoTotal}}</p></td>
+
+                       <td><p>{{ven.lucroLiquido}}</p></td>
+                       
+                    </tr>
+                    
+                {% endfor %}
+
+                <td><p>{{ven.pk}}</p></td>
+
+                       <td><p></p></td>
+
+                       <td><p></p></td>
+
+                       <td><p>{{valor_venda}}</p></td>
+
+                       <td><p>{{tescer}}</p></td>
+
+                       <td><p>{{fechar}}</p></td>
+
+                       <td><p>{{encher}}</p></td>
+
+                       <td><p>{{bordar}}</p></td>
+
+                       <td><p>{{linha}}</p></td>
+
+                       <td><p>{{caixinha}}</p></td>
+
+                       <td><p>{{total}}</p></td>
+
+                       <td><p>{{lucro_liquido_total}}</p></td>
+            
+            </table>
+
+            
+            
+    
+
+    </main>
+
+{% endblock corpoPagina %}
+
+{% block extra %}
+
+    <div class = "grafico">
+
+        <div class = "row my-4">
+
+            <div class = "col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto">
+
+                <div id = "chart" class = "chart">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock extra %}    

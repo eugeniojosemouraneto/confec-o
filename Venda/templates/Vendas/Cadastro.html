@@ -1,0 +1,65 @@
+{% extends "global/base.html" %}
+
+{% block corpoPagina %}
+
+<div class = "header">
+
+    <a class = "header-link link" href = "{% url 'Vendas:Cadastro-Vendas' %}">Cadastro de Venda</a>
+
+    <a class = "header-link link" href = "{% url 'Vendas:Cadastro-Produto' %}">Cadastro de Produto</a>
+
+    <a class = "header-link link" href = "{% url 'Vendas:Cadastro-Produto-Base' %}">Cadastro de Produto Base</a>
+    
+</div>
+
+<br>
+
+<br>
+
+    <div class = "conteudo">
+        
+        <h3>{{sub_titulo}}</h3>
+
+        <div class = "content form-wrapper">
+
+            <form
+                action="{{ form_action }}"
+                method="POST"
+                enctype="multipart/form-data"
+            >
+
+                {% csrf_token %} 
+                {% comment %} segurança, literalmente segurança dos dados {% endcomment %}
+
+                <div class="form-content">
+
+                    {% for field in form %}
+
+                    <div class="form-group">
+
+                        <label for="{{ field.id_for_label }}"><p>{{ field.label }}</p></label>
+                        {{ field }}
+
+                    </div>
+
+                    {% endfor %} 
+
+                </div>
+
+                <br>
+
+                <br>
+
+                <div class="form-content form-group">
+
+                    <button class="btn" type="submit">{{ title }}</button>
+
+                </div> 
+
+            </form>
+
+        </div>
+
+    </div>
+
+{% endblock corpoPagina %}

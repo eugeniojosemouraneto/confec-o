@@ -1,0 +1,113 @@
+{% extends "global/base.html" %}
+
+{% block corpoPagina %}
+
+<br>
+
+<br>
+
+    <div class = "conteudo">
+        
+        <h3>Vendas Gerais</h3>
+
+        <div class = "content form-wrapper">
+
+            <form
+                action="{{ form_action }}"
+                method="POST"
+                enctype="multipart/form-data"
+            >
+
+                {% csrf_token %} 
+                {% comment %} segurança, literalmente segurança dos dados {% endcomment %}
+
+                <div class="form-content">
+
+                    {% for field in form %}
+
+                    <div class="form-group">
+
+                        <label for="{{ field.id_for_label }}"><p>{{ field.label }}</p></label>
+                        {{ field }}
+
+                    </div>
+
+                    {% endfor %} 
+
+                </div>
+
+                <br>
+
+                <br>
+
+                <div class="form-content form-group">
+
+                    <button class="btn" type="submit">{{ title }}</button>
+
+                </div> 
+
+            </form>
+
+        </div>
+
+        <br>
+
+        <p>teste</p>
+
+        <div class = "conteudoPrincipal">
+
+            <table>
+
+                <tr class = 'tabela-titulo'>
+
+                    {% for cat in categorias %}
+                
+                        <td><p>{{cat}}</p></td>
+                    
+                    {% endfor %}
+                
+                </tr>
+
+                {% for ven in vendas %}
+
+                    <tr>
+
+                       <td><p>{{ven.pk}}</p></td>
+
+                       <td><p>{{ven.produto.nome}}</p></td>
+
+                       <td><p>{{ven.unidadesVendidas}}</p></td>
+
+                       <td><p>{{ven.lucroBruto}}</p></td>
+
+                       <td><p>{{ven.gastoTescer}}</p></td>
+
+                       <td><p>{{ven.gastoFechar}}</p></td>
+
+                       <td><p>{{ven.gastoEncher}}</p></td>
+
+                       <td><p>{{ven.gastoSaquinho}}</p></td>
+
+                       <td><p>{{ven.gastoCordao}}</p></td>
+
+                       <td><p>{{ven.gastoBordar}}</p></td>
+
+                       <td><p>{{ven.gastoLinha}}</p></td>
+
+                       <td><p>{{ven.gastoCaixinha}}</p></td>
+
+                       <td><p>{{ven.gastoTotal}}</p></td>
+
+                       <td><p>{{ven.lucroLiquido}}</p></td>
+
+                       <td><p>{{ven.dia}}/{{ven.mes}}/{{ven.ano}}</p></td>
+                       
+                    </tr>
+                    
+                {% endfor %}
+            
+            </table>
+
+    </div>
+
+{% endblock corpoPagina %}
