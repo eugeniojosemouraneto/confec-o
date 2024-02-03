@@ -8,7 +8,8 @@ from Venda.models import *
 from Venda.forms import *
 from random import randrange
 
-def get_chart(_request):
+# @login_required(login_url = 'Usuario:Login')
+def VendasMenssal(request):
 
     datas = []
 
@@ -58,7 +59,9 @@ def get_chart(_request):
 
             amount += aux.lucroLiquido
 
-        datas.append(amount)
+        datas.append(float(f'{amount:.2f}'));
+
+        print(list_month[i], datas[i])
         
         current_month += 1
 
@@ -67,41 +70,13 @@ def get_chart(_request):
             current_month = 1
 
             current_year += 1
-
-    chart = {
-        'xAxis': [
-            {
-                'type': "category",
-                'data': list_month
-            }
-        ],
-        'yAxis': [
-            {
-                'type': "value"
-            }
-        ],
-        'series': [
-            {
-                'data': datas,
-                'type': "bar"
-            }
-        ]
-    }
-
-    return JsonResponse(chart)
-
-# @login_required(login_url = 'Usuario:Login')
-def VendasMenssal(request):
-
-    data = date.today()
-
-    mesAtual = data.month
-    anoAtual = data.year
+    
+    current_month -= 1
 
     
     categorias = "id", "Produto", 'Unidades', 'Lucro Bruto', 'Tescer', 'Fechar', 'Encher', 'Bordar', 'Linha', 'Caixinha', 'Gasto total', 'Lucro liquido'
 
-    vendas = Venda.objects.all().filter(mes = mesAtual, ano = anoAtual)
+    vendas = Venda.objects.all().filter(mes = current_month, ano = current_year)
 
     valor_venda = 0.00
     lucro_liquido_total = 0.00
@@ -125,8 +100,6 @@ def VendasMenssal(request):
         caixinha += ven.gastoCaixinha
         total += ven.gastoTotal
 
-    
-
     context = {
         'title' : 'Vendas do mês',
         'lucro_liquido_total' : f'{lucro_liquido_total:.2f}',
@@ -140,7 +113,18 @@ def VendasMenssal(request):
         'total' : f'{total:.2f}',
         'categoria' : categorias,
         'vendas' : vendas,
-        'mes' : mesAtual,
+        'month1' : list_month[0],
+        'month2' : list_month[1],
+        'month3' : list_month[2],
+        'month4' : list_month[3],
+        'month5' : list_month[4],
+        'month6' : list_month[5],
+        'data_month1' : datas[0],
+        'data_month2' : datas[1],
+        'data_month3' : datas[2],
+        'data_month4' : datas[3],
+        'data_month5' : datas[4],
+        'data_month6' : datas[5],
     }
 
     return render(

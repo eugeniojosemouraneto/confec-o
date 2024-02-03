@@ -10,6 +10,10 @@
         
         <h3>Vendas Gerais</h3>
 
+        <p>Busque as mendas menssais do mes especificado</p>
+
+        <br>
+
         <div class = "content form-wrapper">
 
             <form
@@ -49,64 +53,6 @@
             </form>
 
         </div>
-
-        <br>
-
-        <p>teste</p>
-
-        <div class = "conteudoPrincipal">
-
-            <table>
-
-                <tr class = 'tabela-titulo'>
-
-                    {% for cat in categorias %}
-                
-                        <td><p>{{cat}}</p></td>
-                    
-                    {% endfor %}
-                
-                </tr>
-
-                {% for ven in vendas %}
-
-                    <tr>
-
-                       <td><p>{{ven.pk}}</p></td>
-
-                       <td><p>{{ven.produto.nome}}</p></td>
-
-                       <td><p>{{ven.unidadesVendidas}}</p></td>
-
-                       <td><p>{{ven.lucroBruto}}</p></td>
-
-                       <td><p>{{ven.gastoTescer}}</p></td>
-
-                       <td><p>{{ven.gastoFechar}}</p></td>
-
-                       <td><p>{{ven.gastoEncher}}</p></td>
-
-                       <td><p>{{ven.gastoSaquinho}}</p></td>
-
-                       <td><p>{{ven.gastoCordao}}</p></td>
-
-                       <td><p>{{ven.gastoBordar}}</p></td>
-
-                       <td><p>{{ven.gastoLinha}}</p></td>
-
-                       <td><p>{{ven.gastoCaixinha}}</p></td>
-
-                       <td><p>{{ven.gastoTotal}}</p></td>
-
-                       <td><p>{{ven.lucroLiquido}}</p></td>
-
-                       <td><p>{{ven.dia}}/{{ven.mes}}/{{ven.ano}}</p></td>
-                       
-                    </tr>
-                    
-                {% endfor %}
-            
-            </table>
 
     </div>
 

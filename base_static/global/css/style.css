@@ -46,14 +46,6 @@ body {
     background: var(--corPreta);
 }
 
-.chart {
-    width: 100%;
-
-    min-height: 400px;
-
-    background: var(--corPreta);
-}
-
 .header {
     background: var(--corCinzaClaro);
 
@@ -134,6 +126,14 @@ th, td {
     text-align: left;
 
     padding: calc(var(--espaço) / 2);
+}
+
+#myDynamicChart {
+    background-color: var(--corBranca);
+
+    max-height: 60rem;
+
+    font-size: var(--fonte-grande);
 }
 
 .btn {

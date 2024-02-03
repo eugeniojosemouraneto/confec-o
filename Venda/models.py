@@ -109,3 +109,17 @@ class Venda(models.Model):
     def __str__(self) -> int:
 
         return f'{self.mes}'
+    
+class RelatorioMenssal(models.Model):
+
+    class Meta:
+
+        verbose_name = 'Relatorio_menssal'
+
+        verbose_name_plural = 'Relatorios_menssais'
+
+    mes = models.IntegerField()
+
+    ano = models.IntegerField()
+
+    valorTotal = models.FloatField()

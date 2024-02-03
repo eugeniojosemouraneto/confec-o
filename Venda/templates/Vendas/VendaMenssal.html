@@ -6,12 +6,9 @@
 
     <br>
 
-
     <main class = "conteudo">
         
         <br>
-
-        <div class = "conteudoPrincipal">
 
             <table>
 
@@ -84,26 +81,63 @@
             </table>
 
             
-            
-    
 
     </main>
 
 {% endblock corpoPagina %}
 
-{% block extra %}
+{% block CHART %}
+<div class="conteudo">
+    <canvas id="myDynamicChart"></canvas>
 
-    <div class = "grafico">
+    <script>
+        // Função para gerar dados aleatórios
+        function gerarDados() {
+            var data = [];
+            data.push({{data_month1 | safe}});
+            data.push({{data_month2 | safe}});
+            data.push({{data_month3 | safe}});
+            data.push({{data_month4 | safe}});
+            data.push({{data_month5 | safe}});
+            data.push({{data_month6 | safe}});
 
-        <div class = "row my-4">
+            return data;
 
-            <div class = "col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto">
+            
+        }
 
-                <div id = "chart" class = "chart">
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-{% endblock extra %}    
+        // Criação do gráfico inicial
+        var ctx = document.getElementById('myDynamicChart').getContext('2d');
+        var myDynamicChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['{{month1}}', '{{month2}}', '{{month3}}', '{{month4}}', '{{month5}}',  '{{month6}}'],
+                datasets: [{
+                    label: 'lUCRO LIQUIDO MENSSAL',
+                    data: gerarDados(),
+                    backgroundColor: '#042D29',
+                    borderColor: '#151716',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                // Adicione opções para ajustar o tamanho do gráfico
+                maintainAspectRatio: false, // Permite que o tamanho seja ajustado
+                responsive: true,
+                scales: {
+                    y: {
+                        ticks: {
+                            fontSize: 100 // Altera o tamanho da fonte do eixo y
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            fontSize: 100 // Altera o tamanho da fonte do eixo x
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</div>
+{% endblock CHART %}
