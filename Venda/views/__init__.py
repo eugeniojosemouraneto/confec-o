@@ -1,2 +1,2 @@
-from .VendasGerais import *
-from .Cadastro import *
+from .Sales import *
+from .Register import *

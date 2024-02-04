@@ -90,7 +90,7 @@ body {
     filter: brightness(70%);
 }
 
-.conteudo {
+.content {
     max-width: var(--largura-pagina-principal);
 
     margin: calc(var(--espaço) * 2) auto;
@@ -116,7 +116,7 @@ table {
     font-size: var(--fonte-pequena);
 }
 
-.tabela-titulo {
+.table-title {
     background: var(--corCinzaClaro);
 }
 

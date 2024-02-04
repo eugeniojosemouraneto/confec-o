@@ -1,14 +1,14 @@
 {% extends "global/base.html" %}
 
-{% block corpoPagina %}
+{% block body_page %}
 
 <div class = "header">
 
-    <a class = "header-link link" href = "{% url 'Vendas:Cadastro-Vendas' %}">Cadastro de Venda</a>
+    <a class = "header-link link" href = "{% url 'Sales:Register-Sales' %}">Cadastro de Venda</a>
 
-    <a class = "header-link link" href = "{% url 'Vendas:Cadastro-Produto' %}">Cadastro de Produto</a>
+    <a class = "header-link link" href = "{% url 'Sales:Register-Product' %}">Cadastro de Produto</a>
 
-    <a class = "header-link link" href = "{% url 'Vendas:Cadastro-Produto-Base' %}">Cadastro de Produto Base</a>
+    <a class = "header-link link" href = "{% url 'Sales:Register-Product-Base' %}">Cadastro de Produto Base</a>
     
 </div>
 
@@ -16,7 +16,7 @@
 
 <br>
 
-    <div class = "conteudo">
+    <div class = "content">
         
         <h3>{{sub_titulo}}</h3>
 
@@ -62,4 +62,4 @@
 
     </div>
 
-{% endblock corpoPagina %}
+{% endblock body_page %}

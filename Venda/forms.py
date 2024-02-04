@@ -1,36 +1,36 @@
 from Venda.models import *
 from django import forms
 
-class VendaForm(forms.ModelForm):
+class SaleForm(forms.ModelForm):
 
     class Meta:
 
-        model = Venda
+        model = Sale
 
         fields = (
-            'produto',
-            'lucroBruto',
-            'unidadesVendidas',
-            'dia',
-            'mes',
-            'ano',
+            'product',
+            'grossProfit',
+            'unitsSold',
+            'day',
+            'month',
+            'year',
         )
         
-        produtos = Produto.objects.all()
+        products = Product.objects.all()
 
-class ProdutoForm(forms.ModelForm):
+class ProductForm(forms.ModelForm):
 
     class Meta:
 
-        model = Produto
+        model = Product
 
         fields = (
-            'nome',
-            'genero',
-            'unidadesSapatinho',
-            'unidadesLuvinha',
-            'unidadesToca',
-            'unidadesTiara'
+            'name',
+            'gender',
+            'shoeUnits',
+            'gloveUnits',
+            'denUnits',
+            'tiaraUnits'
         )
 
 
@@ -39,55 +39,52 @@ class VendaFinal(forms.ModelForm):
     
     class Meta:
 
-        model = Venda
+        model = Sale
 
         fields = (
-            'produto',
-            'lucroBruto',
-            'unidadesVendidas',
-            'gastoTescer',
-            'gastoFechar',
-            'gastoEncher',
-            'gastoCordao',
-            'gastoBordar',
-            'gastoLinha',
-            'gastoCaixinha',
-            'gastoTotal',
-            'lucroLiquido',
-            'dia',
-            'mes',
-            'ano',
+            'product',
+            'grossProfit',
+            'unitsSold',
+            'spentWeaving',
+            'spentClose',
+            'spentFiling',
+            'spentEmbroider',
+            'spentLine',
+            'spentBox',
+            'totalCost',
+            'netProfit',
+            'day',
+            'month',
+            'year',
         )
         
-        produtos = Produto.objects.all()
+        products = Product.objects.all()
 
         
 
-class CustoBase(forms.ModelForm):
+class BaseCost(forms.ModelForm):
 
     class Meta:
 
-        model = Produto_Custos_Base
+        model = Product_Base_Cost
 
         fields = (
-            'Nome',
-            'Tescer',
-            'Fechar',
-            'Encher',
-            'Cordao',
-            'Bordar',
-            'Laco_cordao',
-            'Linha',
-            'Caixinha'
+            'Name',
+            'Weaving',
+            'Close',
+            'Fill',
+            'Embroider',
+            'Line',
+            'Box'
         )
 
-class Vendas_Gerais_Form(forms.ModelForm):
+class General_Sales_Form(forms.ModelForm):
 
     class Meta:
 
-        model = Venda
+        model = Sale
 
         fields = (
-            'mes', 
-            'ano',
+            'month', 
+            'year',
         )

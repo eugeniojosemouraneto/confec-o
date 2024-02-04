@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Produto_Custos_Base(models.Model):
+class Product_Base_Cost(models.Model):
 
     class Meta:
 
@@ -9,30 +9,26 @@ class Produto_Custos_Base(models.Model):
 
         verbose_name_plural = 'Produtos_bases'
 
-    Nome = models.CharField(max_length = 100)
+    Name = models.CharField(max_length = 100)
 
-    Tescer = models.FloatField()
+    Weaving = models.FloatField()
 
-    Fechar = models.FloatField()
+    Close = models.FloatField()
 
-    Encher = models.FloatField()
+    Fill = models.FloatField()
 
-    Cordao = models.FloatField()
+    Embroider = models.FloatField()
 
-    Bordar = models.FloatField()
+    Line = models.FloatField()
 
-    Laco_cordao = models.FloatField()
-
-    Linha = models.FloatField()
-
-    Caixinha = models.FloatField(default = 0.00)
+    Box = models.FloatField(default = 0.00)
 
     def __str__(self) -> str:
         
-        return f'{self.Nome}'
+        return f'{self.Name}'
     
 
-class Produto(models.Model):
+class Product(models.Model):
 
     class Meta:
 
@@ -40,23 +36,23 @@ class Produto(models.Model):
 
         verbose_name_plural = 'Produtos'
 
-    nome = models.CharField(max_length = 100, default = "")
+    name = models.CharField(max_length = 100, default = "")
 
-    genero = models.BooleanField(default = 0)
+    gender = models.BooleanField(default = 0)
 
-    unidadesSapatinho = models.IntegerField(default = 0)
+    shoeUnits = models.IntegerField(default = 0)
 
-    unidadesLuvinha = models.IntegerField(default = 0)
+    gloveUnits = models.IntegerField(default = 0)
 
-    unidadesToca = models.IntegerField(default = 0)
+    denUnits = models.IntegerField(default = 0)
 
-    unidadesTiara = models.IntegerField(default = 0)
+    tiaraUnits = models.IntegerField(default = 0)
 
     def __str__(self) -> str:
         
-        return f'{self.nome}'
+        return f'{self.name}'
 
-class Venda(models.Model):
+class Sale(models.Model):
 
     class Meta:
 
@@ -64,62 +60,42 @@ class Venda(models.Model):
 
         verbose_name_plural = 'Vendas'
 
-    produto = models.ForeignKey(
-        Produto, 
+    product = models.ForeignKey(
+        Product, 
         on_delete = models.SET_NULL,
         blank = True,
         null = True
     )
 
-    lucroBruto = models.FloatField(
+    grossProfit = models.FloatField(
         blank = True,
         null = True
     )
 
-    unidadesVendidas = models.IntegerField()
+    unitsSold = models.IntegerField()
 
-    gastoTescer = models.FloatField()
+    spentWeaving = models.FloatField()
 
-    gastoFechar = models.FloatField()
+    spentClose = models.FloatField()
 
-    gastoEncher = models.FloatField()
+    spentFiling = models.FloatField()
 
-    gastoCordao = models.FloatField()
+    spentEmbroider = models.FloatField()
 
-    gastoBordar = models.FloatField()
+    spentLine = models.FloatField()
 
-    gastoLinha = models.FloatField()
+    spentBox = models.FloatField(default = 0.00)
 
-    gastoCaixinha = models.FloatField(default = 0.00)
+    totalCost = models.FloatField()
 
-    gastoTotal = models.FloatField()
+    netProfit = models.FloatField()
 
-    lucroLiquido = models.FloatField()
+    day = models.IntegerField()
 
-    dia = models.IntegerField()
+    month = models.IntegerField()
 
-    mes = models.IntegerField()
-
-    ano = models.IntegerField()
+    year = models.IntegerField()
 
     def __str__(self) -> str:
         
-        return f'{self.produto}'
-    
-    def __str__(self) -> int:
-
-        return f'{self.mes}'
-    
-class RelatorioMenssal(models.Model):
-
-    class Meta:
-
-        verbose_name = 'Relatorio_menssal'
-
-        verbose_name_plural = 'Relatorios_menssais'
-
-    mes = models.IntegerField()
-
-    ano = models.IntegerField()
-
-    valorTotal = models.FloatField()
+        return f'{self.product}'

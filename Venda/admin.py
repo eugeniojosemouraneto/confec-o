@@ -1,35 +1,35 @@
 from django.contrib import admin
 from Venda import models
 
-@admin.register(models.Produto)
-class ProdutoAdmin(admin.ModelAdmin):
+@admin.register(models.Product)
+class Product_Admin(admin.ModelAdmin):
 
-    list_display = 'nome', 'unidadesSapatinho', 'unidadesLuvinha', 'unidadesToca', 'unidadesTiara', 'genero',
+    list_display = 'name', 'shoeUnits', 'gloveUnits', 'denUnits', 'denUnits', 'gender',
 
-    ordering = 'nome',
+    ordering = 'name',
 
     list_per_page = 20
 
     list_max_show_all = 2000
 
 
-@admin.register(models.Venda)
-class VendaAdmin(admin.ModelAdmin):
+@admin.register(models.Sale)
+class Sale_Admin(admin.ModelAdmin):
 
-    list_display = 'produto', 'lucroBruto', 'unidadesVendidas', 'dia', 'mes', 'ano',
+    list_display = 'product', 'grossProfit', 'unitsSold', 'day', 'month', 'year',
 
-    ordering = 'produto', 'ano',
+    ordering = 'product', 'year', 'month'
 
-    list_filter = 'produto', 'mes', 'ano',
+    list_filter = 'product', 'month', 'year',
 
     list_per_page = 20
 
     list_max_show_all = 100000
 
-@admin.register(models.Produto_Custos_Base)
-class CustoBase_Adim(admin.ModelAdmin):
+@admin.register(models.Product_Base_Cost)
+class Cost_Basis_Adim(admin.ModelAdmin):
 
-    list_display = 'Nome', 'Tescer','Fechar', 'Encher', 'Cordao', 'Bordar', 'Laco_cordao', 'Linha', 'Caixinha'
+    list_display = 'Name', 'Weaving','Close', 'Fill', 'Embroider', 'Line', 'Box'
 
     list_per_page = 20
 
