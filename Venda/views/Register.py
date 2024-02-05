@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from Venda.constant_variables import *
 from django.urls import reverse
 from Venda.models import *
 from Venda.forms import *
@@ -25,18 +26,7 @@ def Register_Sale(request):
 
             new_sale = form.save(commit = False)
 
-            new_sale.spentWeaving = 0.00
-
-            new_sale.spentClose = 0.00
-
-            new_sale.spentFiling = 0.00
-
-            new_sale.spentEmbroider = 0.00
-
-            new_sale.spentLine = 0.00
-
-            new_sale.spentBox = 0.00
-
+            new_sale.spentWeaving = new_sale.spentClose = new_sale.spentFiling = new_sale.spentEmbroider = new_sale.spentLine = new_sale.spentBox = 0.00
 
             if new_sale.product.shoeUnits != 0:
 
@@ -74,7 +64,7 @@ def Register_Sale(request):
 
                 new_sale.spentLine += new_sale.unitsSold * new_sale.product.gloveUnits * glove.Line
 
-                new_sale.spentBox = new_sale.unitsSold * new_sale.product.gloveUnits * glove.Box
+                new_sale.spentBox += new_sale.unitsSold * new_sale.product.gloveUnits * glove.Box
 
             if new_sale.product.denUnits != 0:
 
@@ -90,7 +80,7 @@ def Register_Sale(request):
 
                 new_sale.spentLine += new_sale.unitsSold * new_sale.product.denUnits * den.Line
 
-                new_sale.spentBox = new_sale.unitsSold * new_sale.product.denUnits * den.Box
+                new_sale.spentBox += new_sale.unitsSold * new_sale.product.denUnits * den.Box
 
             if new_sale.product.tiaraUnits != 0:
 
@@ -106,24 +96,14 @@ def Register_Sale(request):
 
                 new_sale.spentLine += new_sale.unitsSold * new_sale.product.tiaraUnits * tiara.Line
 
-                new_sale.spentBox = new_sale.unitsSold * new_sale.product.tiaraUnits * tiara.Box
+                new_sale.spentBox += new_sale.unitsSold * new_sale.product.tiaraUnits * tiara.Box
+
+
+            new_sale.spentWeaving, new_sale.spentClose, new_sale.spentFiling, new_sale.spentEmbroider, new_sale.spentLine, new_sale.spentBox = format_accurately_list(new_sale.spentWeaving, new_sale.spentClose, new_sale.spentFiling, new_sale.spentEmbroider, new_sale.spentLine, new_sale.spentBox)
 
 
 
-            new_sale.spentWeaving = float(f"{new_sale.spentWeaving:.2f}")
-
-            new_sale.spentClose = float(f"{new_sale.spentClose:.2f}")
-
-            new_sale.spentFiling = float(f"{new_sale.spentFiling:.2f}")
-
-            new_sale.spentEmbroider = float(f"{new_sale.spentEmbroider:.2f}")
-
-            new_sale.spentLine = float(f"{new_sale.spentLine:.2f}")
-
-            new_sale.spentBox = float(f"{new_sale.spentBox:.2f}")
-
-
-            new_sale.totalCost = float(f"{new_sale.spentWeaving + new_sale.spentClose + new_sale.spentFiling + new_sale.spentEmbroider + new_sale.spentLine + new_sale.spentBox:.2f}")
+            new_sale.totalCost = float(f'{new_sale.spentWeaving + new_sale.spentClose + new_sale.spentFiling + new_sale.spentEmbroider + new_sale.spentLine + new_sale.spentBox:.2f}')
 
             new_sale.netProfit = float(f'{new_sale.grossProfit - new_sale.totalCost:.2f}')
 

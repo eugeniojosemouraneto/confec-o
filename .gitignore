@@ -130,4 +130,6 @@ db copy.sqlite3
 static/
 
 css_teste.css
-teste.html
+charts.html
+cronometro.html
+teste_.py

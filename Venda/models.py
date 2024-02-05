@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 
 class Product_Base_Cost(models.Model):
 
@@ -84,17 +85,17 @@ class Sale(models.Model):
 
     spentLine = models.FloatField()
 
-    spentBox = models.FloatField(default = 0.00)
+    spentBox = models.FloatField()
 
     totalCost = models.FloatField()
 
     netProfit = models.FloatField()
 
-    day = models.IntegerField()
+    day = models.IntegerField(default = date.today().day)
 
-    month = models.IntegerField()
+    month = models.IntegerField(default = date.today().month)
 
-    year = models.IntegerField()
+    year = models.IntegerField(default = date.today().year)
 
     def __str__(self) -> str:
         
