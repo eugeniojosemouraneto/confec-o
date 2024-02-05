@@ -128,7 +128,7 @@ th, td {
     padding: calc(var(--espaço) / 2);
 }
 
-#myDynamicChart {
+#myDynamicChart, #myHorizontalChart {
     background-color: var(--corBranca);
 
     max-height: 60rem;

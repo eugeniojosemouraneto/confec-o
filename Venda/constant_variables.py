@@ -23,26 +23,14 @@ def table_values(sales, sale_value = 0.00, total_net_profit = 0.00, weave = 0.00
 
     return format_accurately_list(total_net_profit, sale_value, weave, close, fill, embroider, line, box, total)
 
-def previous_six_months(current_month, current_year):
+
+def profit_expense_six_months(current_month, current_year):
 
     list_month = []
 
-    datas = []
+    profit = []
 
-    months = {
-        1 : 'Jan',
-        2 : 'Fev',
-        3 : 'Mar',
-        4 : 'Abr',
-        5 : 'Mai',
-        6 : 'Jun',
-        7 : 'Jul',
-        8 : 'Ago',
-        9 : 'Out',
-        10 : 'Set',
-        11 : 'Nov',
-        12 : 'Dez'
-    }
+    expense = []
 
     for i in range(6):
         
@@ -62,13 +50,19 @@ def previous_six_months(current_month, current_year):
 
         assistant = Sale.objects.all().filter(month = current_month, year = current_year)
 
-        amount = 0.00
+        prof = 0.00
+
+        exp = 0.00
 
         for aux in assistant:
 
-            amount += aux.netProfit
+            prof += aux.netProfit
 
-        datas.append(float(f'{amount:.2f}'))
+            exp += aux.totalCost
+
+        profit.append(float(f'{prof:.2f}'))
+
+        expense.append(float(f'{exp:.2f}'))
         
         current_month += 1
 
@@ -80,7 +74,9 @@ def previous_six_months(current_month, current_year):
     
     current_month -= 1
 
-    return list_month, datas
+    print(profit, expense)
+
+    return list_month, profit, expense
 
 
 categories = "id", "Produto", 'Unidades', 'Lucro Bruto', 'Tescer', 'Fechar', 'Encher', 'Bordar', 'Linha', 'Caixinha', 'Gasto total', 'Lucro liquido'
@@ -89,3 +85,18 @@ data = date.today()
 
 current_month = data.month
 current_year = data.year
+
+months = {
+    1 : 'Jan',
+    2 : 'Fev',
+    3 : 'Mar',
+    4 : 'Abr',
+    5 : 'Mai',
+    6 : 'Jun',
+    7 : 'Jul',
+    8 : 'Ago',
+    9 : 'Out',
+    10 : 'Set',
+    11 : 'Nov',
+    12 : 'Dez'
+}

@@ -25,6 +25,10 @@
 
         {% block body_page %}{% endblock body_page %}
 
-        {% block CHART %}{% endblock CHART %}
+        {% if status_charts %}
+
+            {% block CHART %}{% endblock CHART %}
+
+        {% endif %}
     </body>
 </html>

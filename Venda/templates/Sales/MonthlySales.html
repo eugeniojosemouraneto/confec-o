@@ -88,33 +88,36 @@
 
 {% block CHART %}
 <div class="content">
-    <canvas id="myDynamicChart"></canvas>
+    <canvas id="myDynamicChart" width="100%" height="100%"></canvas>
+
+    <br>
+
+    <canvas id="myHorizontalChart" width="400" height="200"></canvas>
 
     <script>
         // Função para gerar dados aleatórios
-        function generateData() {
+        function profit() {
+
             var data = [];
-            data.push({{data_month1 | safe}});
-            data.push({{data_month2 | safe}});
-            data.push({{data_month3 | safe}});
-            data.push({{data_month4 | safe}});
-            data.push({{data_month5 | safe}});
-            data.push({{data_month6 | safe}});
+            data.push({{monthly_profit_data1 | safe}});
+            data.push({{monthly_profit_data2 | safe}});
+            data.push({{monthly_profit_data3 | safe}});
+            data.push({{monthly_profit_data4 | safe}});
+            data.push({{monthly_profit_data5 | safe}});
+            data.push({{monthly_profit_data6 | safe}});
 
             return data;
-
-            
         }
 
         // Criação do gráfico inicial
-        var ctx = document.getElementById('myDynamicChart').getContext('2d');
-        var myDynamicChart = new Chart(ctx, {
+        var ctx_chart1 = document.getElementById('myDynamicChart').getContext('2d');
+        var myDynamicChart = new Chart(ctx_chart1, {
             type: 'bar',
             data: {
                 labels: ['{{month1}}', '{{month2}}', '{{month3}}', '{{month4}}', '{{month5}}',  '{{month6}}'],
                 datasets: [{
                     label: 'lUCRO LIQUIDO MENSSAL',
-                    data: generateData(),
+                    data: profit(),
                     backgroundColor: '#042D29',
                     borderColor: '#151716',
                     borderWidth: 1
@@ -138,6 +141,71 @@
                 }
             }
         });
+
+        
+
+        function expense() {
+
+            var data = [];
+            data.push({{monthly_expense_data1 | safe}});
+            data.push({{monthly_expense_data2 | safe}});
+            data.push({{monthly_expense_data3 | safe}});
+            data.push({{monthly_expense_data4 | safe}});
+            data.push({{monthly_expense_data5 | safe}});
+            data.push({{monthly_expense_data6 | safe}});
+
+            return data;
+        }
+
+        // Utilizando o código fornecido
+        const DATA_COUNT = 6;
+
+        const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100000.00};
+
+        const labels = ['{{month1}}', '{{month2}}', '{{month3}}', '{{month4}}', '{{month5}}',  '{{month6}}'];
+        const data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Lucro',
+                    data: profit(),
+                    backgroundColor: Chart.helpers.color('red').alpha(0.5).rgbString(),
+                },
+                {
+                    label: 'Despesas',
+                    data: expense(),
+                    backgroundColor: Chart.helpers.color('blue').alpha(0.5).rgbString(),
+                }
+            ]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                indexAxis: 'y',
+                elements: {
+                    bar: {
+                        borderWidth: 2,
+                    }
+                },
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Gráfico de Barras Horizontais'
+                    }
+                }
+            },
+        };
+
+        // Criação do gráfico
+        var ctx = document.getElementById('myHorizontalChart').getContext('2d');
+
+        var myHorizontalChart = new Chart(ctx, config);
     </script>
 </div>
 {% endblock CHART %}

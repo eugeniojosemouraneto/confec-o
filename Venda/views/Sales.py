@@ -11,8 +11,8 @@ def MonthlySales(request):
     list_month = []
     datas = []
 
-    list_month, datas = previous_six_months(current_month, current_year) # variables in the constant_variables file
-
+    list_month, profit, expense = profit_expense_six_months(current_month, current_year) # variables in the constant_variables file
+    
     sales = Sale.objects.all().filter(month = current_month, year = current_year) # variables in the constant_variables file
 
     total_net_profit, sale_value, weave, close, fill, embroider, line, box, total = table_values(sales)
@@ -30,18 +30,25 @@ def MonthlySales(request):
         'total' : total,
         'categories' : categories, # variables in the constant_variables file
         'sales' : sales,
-        'month1' : list_month[0], # variables in the constant_variables file
-        'month2' : list_month[1], #             *****
-        'month3' : list_month[2], #             *****
-        'month4' : list_month[3], #             *****
-        'month5' : list_month[4], #             *****
-        'month6' : list_month[5], #             *****
-        'data_month1' : datas[0], #             *****
-        'data_month2' : datas[1], #             *****
-        'data_month3' : datas[2], #             *****
-        'data_month4' : datas[3], #             *****
-        'data_month5' : datas[4], #             *****
-        'data_month6' : datas[5], # variables in the constant_variables file
+        'month1' : list_month[0],             # variables in the constant_variables file
+        'month2' : list_month[1],             #             *****
+        'month3' : list_month[2],             #             *****
+        'month4' : list_month[3],             #             *****
+        'month5' : list_month[4],             #             *****
+        'month6' : list_month[5],             #             *****
+        'monthly_profit_data1' : profit[0],   #             *****
+        'monthly_profit_data2' : profit[1],   #             *****
+        'monthly_profit_data3' : profit[2],   #             *****
+        'monthly_profit_data4' : profit[3],   #             *****
+        'monthly_profit_data5' : profit[4],   #             *****
+        'monthly_profit_data6' : profit[5],   #             *****
+        'monthly_expense_data1' : expense[0], #             *****
+        'monthly_expense_data2' : expense[1], #             *****
+        'monthly_expense_data3' : expense[2], #             *****
+        'monthly_expense_data4' : expense[3], #             *****
+        'monthly_expense_data5' : expense[4], #             *****
+        'monthly_expense_data6' : expense[5], # variables in the constant_variables file
+        'status_charts' : True
     }
 
     return render(
@@ -65,12 +72,12 @@ def General_sales(request):
         return redirect('Sales:Consultancy-Sales', month = informt.month, year = informt.year)
 
     sales = Sale.objects.all()
-    
+
     context = {
         'title' : 'Vendas gerais',
         'sales' : sales,
         'categorias' : categories, # variables in the constant_variables file
-        'form' : General_Sales_Form()
+        'form' : General_Sales_Form(),
     }
 
     return render(
@@ -98,6 +105,9 @@ def Consultancy_Sales(request, month, year):
         'total' : total,
         'categories' : categories, # variables in the constant_variables file
         'sales' : sales,
+        'status_charts' : False
+
+        
     }
 
     return render(
