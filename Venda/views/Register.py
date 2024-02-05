@@ -38,65 +38,65 @@ def Register_Sale(request):
 
                     slipper = Product_Base_Cost.objects.get(Name = 'sapatinho F')
 
-                new_sale.spentWeaving = new_sale.unitsSold * new_sale.product.shoeUnits * slipper.Weaving
+                new_sale.spentWeaving = new_sale.unitsSold * slipper.Weaving
 
-                new_sale.spentClose = new_sale.unitsSold * new_sale.product.shoeUnits * slipper.Close
+                new_sale.spentClose = new_sale.unitsSold * slipper.Close
 
-                new_sale.spentFiling = new_sale.unitsSold * new_sale.product.shoeUnits * slipper.Fill
+                new_sale.spentFiling = new_sale.unitsSold * slipper.Fill
 
-                new_sale.spentEmbroider = new_sale.unitsSold * new_sale.product.shoeUnits * slipper.Embroider
+                new_sale.spentEmbroider = new_sale.unitsSold * slipper.Embroider
 
-                new_sale.spentLine = new_sale.unitsSold * new_sale.product.shoeUnits * slipper.Line
+                new_sale.spentLine = new_sale.unitsSold * slipper.Line
 
-                new_sale.spentBox = new_sale.unitsSold * new_sale.product.shoeUnits * slipper.Box
+                new_sale.spentBox = new_sale.unitsSold * slipper.Box
 
             if new_sale.product.gloveUnits != 0:
 
                 glove = Product_Base_Cost.objects.get(Name = 'luvinha')
 
-                new_sale.spentWeaving += new_sale.unitsSold * new_sale.product.gloveUnits * glove.Weaving
+                new_sale.spentWeaving += new_sale.unitsSold * glove.Weaving
 
-                new_sale.spentClose += new_sale.unitsSold * new_sale.product.gloveUnits * glove.Close
+                new_sale.spentClose += new_sale.unitsSold * glove.Close
 
-                new_sale.spentFiling += new_sale.unitsSold * new_sale.product.gloveUnits * glove.Fill
+                new_sale.spentFiling += new_sale.unitsSold * glove.Fill
 
-                new_sale.spentEmbroider += new_sale.unitsSold * new_sale.product.gloveUnits * glove.Embroider
+                new_sale.spentEmbroider += new_sale.unitsSold * glove.Embroider
 
-                new_sale.spentLine += new_sale.unitsSold * new_sale.product.gloveUnits * glove.Line
+                new_sale.spentLine += new_sale.unitsSold * glove.Line
 
-                new_sale.spentBox += new_sale.unitsSold * new_sale.product.gloveUnits * glove.Box
+                new_sale.spentBox += new_sale.unitsSold * glove.Box
 
             if new_sale.product.denUnits != 0:
 
                 den = Product_Base_Cost.objects.get(Name = 'toca')
 
-                new_sale.spentWeaving += new_sale.unitsSold * new_sale.product.denUnits * den.Weaving
+                new_sale.spentWeaving += new_sale.unitsSold * den.Weaving
 
-                new_sale.spentClose += new_sale.unitsSold * new_sale.product.denUnits * den.Close
+                new_sale.spentClose += new_sale.unitsSold * den.Close
 
-                new_sale.spentFiling += new_sale.unitsSold * new_sale.product.denUnits * den.Fill
+                new_sale.spentFiling += new_sale.unitsSold * den.Fill
 
-                new_sale.spentEmbroider += new_sale.unitsSold * new_sale.product.denUnits * den.Embroider
+                new_sale.spentEmbroider += new_sale.unitsSold * den.Embroider
 
-                new_sale.spentLine += new_sale.unitsSold * new_sale.product.denUnits * den.Line
+                new_sale.spentLine += new_sale.unitsSold * den.Line
 
-                new_sale.spentBox += new_sale.unitsSold * new_sale.product.denUnits * den.Box
+                new_sale.spentBox += new_sale.unitsSold * den.Box
 
             if new_sale.product.tiaraUnits != 0:
 
                 tiara = Product_Base_Cost.objects.get(Name = 'tiara')
 
-                new_sale.spentWeaving += new_sale.unitsSold * new_sale.product.tiaraUnits * tiara.Weaving
+                new_sale.spentWeaving += new_sale.unitsSold * tiara.Weaving
 
-                new_sale.spentClose += new_sale.unitsSold * new_sale.product.tiaraUnits * tiara.Close
+                new_sale.spentClose += new_sale.unitsSold * tiara.Close
 
-                new_sale.spentFiling += new_sale.unitsSold * new_sale.product.tiaraUnits * tiara.Fill
+                new_sale.spentFiling += new_sale.unitsSold * tiara.Fill
 
-                new_sale.spentEmbroider += new_sale.unitsSold * new_sale.product.tiaraUnits * tiara.Embroider
+                new_sale.spentEmbroider += new_sale.unitsSold * tiara.Embroider
 
-                new_sale.spentLine += new_sale.unitsSold * new_sale.product.tiaraUnits * tiara.Line
+                new_sale.spentLine += new_sale.unitsSold * tiara.Line
 
-                new_sale.spentBox += new_sale.unitsSold * new_sale.product.tiaraUnits * tiara.Box
+                new_sale.spentBox += new_sale.unitsSold * tiara.Box
 
 
             new_sale.spentWeaving, new_sale.spentClose, new_sale.spentFiling, new_sale.spentEmbroider, new_sale.spentLine, new_sale.spentBox = format_accurately_list(new_sale.spentWeaving, new_sale.spentClose, new_sale.spentFiling, new_sale.spentEmbroider, new_sale.spentLine, new_sale.spentBox)
