@@ -176,11 +176,9 @@ th, td {
 .btn {
     background-color: var(--corPreta);
     color: var(--corBranca);
-    text-decoration: none;
     border: 0.1rem solid var(--corBranca);
     cursor: pointer;
     transition: filter var(--transicao-rapida) ease-in-out;
-    padding: 0.5rem;
   }
   
   .btn:hover {

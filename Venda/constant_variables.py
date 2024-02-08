@@ -78,6 +78,17 @@ def profit_expense_six_months(current_month, current_year):
 
     return list_month, profit, expense
 
+def list_cal_register(new_sale, product_base):
+
+    new_sale.spentWeaving += new_sale.unitsSold * product_base.Weaving
+    new_sale.spentClose += new_sale.unitsSold * product_base.Close
+    new_sale.spentFiling += new_sale.unitsSold * product_base.Fill
+    new_sale.spentEmbroider += new_sale.unitsSold * product_base.Embroider
+    new_sale.spentLine += new_sale.unitsSold * product_base.Line
+    new_sale.spentBox += new_sale.unitsSold * product_base.Box
+
+    return new_sale
+
 
 categories = "id", "Produto", 'Unidades', 'Lucro Bruto', 'Tescer', 'Fechar', 'Encher', 'Bordar', 'Linha', 'Caixinha', 'Gasto total', 'Lucro liquido'
 
