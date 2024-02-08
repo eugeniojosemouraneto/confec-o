@@ -4,7 +4,7 @@ from Venda import models
 @admin.register(models.Product)
 class Product_Admin(admin.ModelAdmin):
 
-    list_display = 'name', 'shoeUnits', 'gloveUnits', 'denUnits', 'denUnits', 'gender',
+    list_display = 'name', 'shoeUnits', 'gloveUnits', 'denUnits', 'tiaraUnits', 'gender',
 
     ordering = 'name',
 

@@ -19,7 +19,7 @@ def Register_Sale(request):
             'sub_titulo' : 'Cadastro de Venda',
             'produtos' : products,
             'form' : form,
-            'form_action' : form_action 
+            'form_action' : form_action,
         }
 
         if form.is_valid():
@@ -32,7 +32,7 @@ def Register_Sale(request):
 
                 if new_sale.product.gender == True:
 
-                    slipper = Product_Base_Cost.objects.get(Nome = 'sapatinho M')
+                    slipper = Product_Base_Cost.objects.get(Name = 'sapatinho M')
 
                 else:
 
@@ -113,7 +113,7 @@ def Register_Sale(request):
         
         return render(
             request,
-            'Sales/Register.html',
+            'Sales/Form_Sale_Product.html',
             context = context
         )
     
@@ -121,12 +121,12 @@ def Register_Sale(request):
         'title' : 'Cadastro Venda',
         'sub_titulo' : 'Cadastro de Venda',
         'produtos' : products,
-        'form' : SaleForm()
+        'form' : SaleForm(),
     }
 
     return render(
         request,
-        'Sales/Register.html',
+        'Sales/Form_Sale_Product.html',
         context = context
     )
 
@@ -155,7 +155,7 @@ def Register_Product(request):
         
         return render(
             request,
-            'Sales/Register.html',
+            'Sales/Form_Sale_Product.html',
             context = context
         )
     
@@ -167,7 +167,7 @@ def Register_Product(request):
 
     return render(
         request,
-        'Sales/Register.html',
+        'Sales/Form_Sale_Product.html',
         context = context
     )
 
@@ -196,7 +196,7 @@ def Product_Registration_Base(request):
         
         return render(
             request,
-            'Sales/Register.html',
+            'Sales/Form_Sale_Product.html',
             context = context
         )
     
@@ -208,6 +208,6 @@ def Product_Registration_Base(request):
 
     return render(
         request,
-        'Sales/Register.html',
+        'Sales/Form_Sale_Product.html',
         context = context
     )

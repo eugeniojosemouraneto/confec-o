@@ -81,6 +81,10 @@ def profit_expense_six_months(current_month, current_year):
 
 categories = "id", "Produto", 'Unidades', 'Lucro Bruto', 'Tescer', 'Fechar', 'Encher', 'Bordar', 'Linha', 'Caixinha', 'Gasto total', 'Lucro liquido'
 
+categories_product = "nome", "genero", "quant sap", "quant luva", "quant toca", "quant tiara"
+
+categories_base_cost = "nome", "tescer", "fechar", "encher", "bordar", "linha", "caixinha"
+
 data = date.today()
 
 current_month = data.month

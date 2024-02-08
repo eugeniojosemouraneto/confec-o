@@ -1,15 +1,45 @@
-<header class = "header">
+<div class="header" id = "header">
+    <button onclick="toggleSidebar()" class = "btn_icon">
+        <i class="bi bi-list icon"></i>
+    </button>
 
-    <h1 class = "header-heading">
+    <div class="nagivation_header" id="nagivation_header">
 
-        <a class = "header-link link" href = "{% url 'Sales:Monthly' %}">
-                Home
-        </a>
+        <ul>
+            <a class="active" href="{% url 'Sales:Monthly' %}"><i class="bi bi-house"></i></i>Home</a>
+        </ul> 
+        <ul>
+            <a class="active" href="{% url 'Sales:Register-Sales' %}"><i class="bi bi-clipboard"></i>Cadastro</a>
+        </ul>
+        <ul>
+            <a class="active" href="{% url 'Sales:Modify-Menu' %}"><i class="bi bi-pencil-square"></i>Alterar</a>
+        </ul>
+        <ul>
+            <a class="active" href="{% url 'Sales:General' %}"><i class="bi bi-table"></i>Vendas Gerais</a>
+        </ul>
+    </div>
+</div>
 
-    </h1>
+<script>
+    var header = document.getElementById('header');
 
-    <a class = "header-link link" href = "{% url 'Sales:Register-Sales' %}">Cadastro</a>
+    var navigation_header = document.getElementById('nagivation_header');
 
-    <a class = "header-link link" href = "{% url 'Sales:General' %}">Vendas Gerais</a>
-    
-</header>
+    var showSidebar = false;
+
+    function toggleSidebar()
+    {
+        showSidebar = !showSidebar;
+
+        if(showSidebar)
+        {
+            navigation_header.style.marginLeft = '-10vw';
+            navigation_header.style.height = '100%';
+        }
+        else
+        {
+            navigation_header.style.marginLeft = '-100vw';
+            navigation_header.style.height = '0px';
+        }
+    }
+</script>

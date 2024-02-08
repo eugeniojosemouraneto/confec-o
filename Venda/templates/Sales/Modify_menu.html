@@ -1,0 +1,105 @@
+{% extends "global/base.html" %}
+
+{% block body_page %}
+
+<br>
+
+<br>
+
+<div class="content">
+
+    <h1>{{sub_titulo}}</h1>
+    
+    <hr>
+    
+    <br>
+
+    <br>
+
+    <h3>Produtos</h3>
+
+    <table>
+
+        <tr class = "table-title">
+         
+            {% for cat in categories_product %}
+                
+                <td><p>{{cat}}</p></td>
+        
+            {% endfor %}
+       
+        </tr>
+
+        {% for prod in products %}
+        
+            <tr>
+
+                <td><a href = "{% url 'Sales:Modify-Product' prod.pk %}">{{prod.name}}</a></td>
+
+                <td><p>{{prod.gender}}</p></td>
+
+                <td><p>{{prod.shoeUnits}}</p></td>
+
+                <td><p>{{prod.gloveUnits}}</p></td>
+
+                <td><p>{{prod.denUnits}}</p></td>
+
+                <td><p>{{prod.tiaraUnits}}</p></td>
+
+            </tr>
+        
+        {% endfor %}
+
+    </table>
+
+    <br>
+
+    <hr>
+
+    <h3>Custo base dos produtos</h3>
+
+    <p>Evitar de alterar o nome dos produtos</p>
+
+    <br>
+    
+    <br>
+
+    <table>
+
+        <tr class = "table-title">
+         
+            {% for cat in categories_base_cost %}
+                
+                <td><p>{{cat}}</p></td>
+        
+            {% endfor %}
+       
+        </tr>
+
+        {% for bc in base_cost %}
+        
+            <tr>
+
+                <td><a class = "header-link link" href = "{% url 'Sales:Modify-Product-Base' bc.pk %}">{{bc.Name}}</a></td>
+
+                <td><p>{{bc.Weaving}}</p></td>
+
+                <td><p>{{bc.Close}}</p></td>
+
+                <td><p>{{bc.Fill}}</p></td>
+
+                <td><p>{{bc.Embroider}}</p></td>
+
+                <td><p>{{bc.Line}}</p></td>
+
+                <td><p>{{bc.Box}}</p></td>
+
+            </tr>
+        
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% endblock body_page %}
